@@ -1,9 +1,18 @@
-## Vite setup
+## React Query -- @tanstack/react-query.
 
-\_ Ở file index.html thêm type="module" cho thẻ script để
-vite biết rằng chúng ta ko dùng CommonJS mà dùng ES6 modules
+\_Là một thư viện hook quản lý dữ liệu requests
 
-\_ Vite yêu cầu đuôi file phải là jsx
+\_ Ý tưởng của thư viện này là để lưu trữ những gì ta fetch từ database.
 
-\_ Vite tìm file index.html trong thư mục root (trường hợp này là src)
-và nó sẽ tìm các file html, css, js mà chúng ta link để tạo ra dự án, trên môi trường dev và production.
+\_Ví dụ: khi ta đã fetch details of pet ID 1, ta sẽ không muốn fetch lại lần nữa mà muốn lấy từ cache. Thư viện này sẽ giúp ta làm điều đó.
+
+## Các bước thực hiện
+
+1. Wrap our app in a query client (<QueryClientProvider><QueryClientProvider/>)
+2. Instantiate a query client (give it a cache and stale times)
+3. Create function request API
+4. Tại nơi cần request API, import useQuery([listKeys], callback), hàm này sẽ trả cho ta một object chứa dữ liệu từ fetch và các properties thuận tiện.
+
+## Chú ý
+
+1. useQuery sử dụng queryClient để biết được dữ liệu đó đã fetch chưa, nếu rồi nó sẽ chỉ đơn giản lấy ra từ bộ nhớ và trả cho biến.
